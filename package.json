@@ -1,0 +1,20 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "Projeto usado para o ensino de Node.js na Caelum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "ensino",
+    "JS-35",
+    "Caelum"
+  ],
+  "author": "Andre Luis Florencio da Silva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
