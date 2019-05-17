@@ -17,6 +17,7 @@
   "author": "Andre Luis Florencio da Silva",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mysql": "^2.17.1"
