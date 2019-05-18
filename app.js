@@ -13,17 +13,24 @@ require('./routes/produtos')(app);
 app.use(express.static('./public'));
 
 app.use((req, resp) => {
-    resp
-        .status(404)
-        .render('erros/erro', {erro: '404 - Página não encontrada'});
+
+  resp.status(404).format({
+    html: ()=> resp.render('erros/erro', {erro: '404 - Página não encontrada'}),
+    json: () => resp.send({erro: '404 - Página não encontrada'})
+  }) 
+
 });
 
 app.use((erro, req, resp, next) =>{
+  
   console.error(`URL: ${req.url}`);
   console.error(erro);
-  resp
-    .render('erros/erro', { erro: e })
-    .status(500)
+
+  resp.status(500).format({
+    html: resp.render('erros/erro', { erro: e }),
+    json: resp.send(erro)
+  });
+
 });
 
 module.exports = app;

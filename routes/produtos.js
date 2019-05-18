@@ -8,17 +8,22 @@ module.exports = (app) => {
 
     const connection = getConnection();
 
-    connection.query('SELECT * FROM livros', (mySqlErro, results) => {
-      try {
-        if(mySqlErro) throw mySqlErro
-        resp.render('produtos/lista', {livros: results});
-        connection.end();
-      } catch (e) {
-        next(e);
-      }
-    })
-  });
+    const queryPromisificada = Promise.promisify(connection.query).bind(connection);
 
+    queryPromisificada('SELECT * FROM livros')
+      .then((results)=>{
+
+        resp.format({
+          json: () => resp.send(results),
+          html: () => resp.render('produtos/lista', {livros: results}),
+          default: () => next('formato não suportado')
+        });
+
+        
+        connection.end();
+      })
+      .catch(next)
+  })
 
   app.get('/produtos/form', (req, resp)=>{
       resp.render('produtos/form', { validationErrors: []});
