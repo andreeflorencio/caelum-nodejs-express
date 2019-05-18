@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const validationErros = require('express-validator');
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.json())
-
+app.use(bodyParser.json());
+app.use(validationErros());
 
 require('./routes/home')(app);
 require('./routes/produtos')(app);

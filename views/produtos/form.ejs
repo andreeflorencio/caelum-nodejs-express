@@ -2,7 +2,7 @@
 
 <div>
     <div class ="container min-container">
-        <h2 class="basic-title">Add</h2>
+        <h2 class="basic-title">Cadastro de Livros</h2>
 
         <% validationErrors.forEach((err) => { %>
             <div class="alert alert-danger">
@@ -13,21 +13,15 @@
         <form action="/produtos" method="post" class="well" role="form">
             <div class="form-group">
                 <label for="titulo">Titulo</label>
-                <div class="input-group">
-                    <input type="text" id="titulo" name="titulo" placeholder="titulo do livro"/>
-                </div>
+                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo do livro" required/>
             </div>
             <div class="form-group">
                 <label for="preco">Preço</label>
-                <div class="input-group">
-                    <input type="text" id="preco" name="preco" placeholder="valor do livro"/>
-                </div>
+                <input type="number" class="form-control" id="preco" name="preco" placeholder="valor do livro" required/>
             </div>
             <div class="form-group">
                 <label for="descricao">Descricao</label>
-                <div class="input-group">
-                    <textarea name="descricao" id="descricao"></textarea>
-                </div>
+                <textarea name="descricao" class="form-control" id="descricao" required></textarea>
             </div>
             <button type="submit" id="btn-gravar" class="btn btn-primary">Gravar</button>
         </form>
